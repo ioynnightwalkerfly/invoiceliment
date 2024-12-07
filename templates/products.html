@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Products</h1>
+
+<!-- ฟอร์มเพิ่มสินค้า -->
+<h2>Add New Product</h2>
+<form id="product-form" class="row g-3">
+    <div class="col-md-6">
+        <input type="text" id="name" class="form-control" placeholder="Product Name" required>
+    </div>
+    <div class="col-md-6">
+        <input type="text" id="description" class="form-control" placeholder="Description" required>
+    </div>
+    <div class="col-md-6">
+        <input type="number" id="price" class="form-control" placeholder="Price" required>
+    </div>
+    <div class="col-md-6">
+        <input type="text" id="unit" class="form-control" placeholder="Unit" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </div>
+</form>
+
+<!-- Modal สำหรับแก้ไขสินค้า -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-product-form">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="mb-3">
+                        <label for="edit-name" class="form-label">Product Name</label>
+                        <input type="text" id="edit-name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-description" class="form-label">Description</label>
+                        <input type="text" id="edit-description" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-price" class="form-label">Price</label>
+                        <input type="number" id="edit-price" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-unit" class="form-label">Unit</label>
+                        <input type="text" id="edit-unit" class="form-control" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="saveEditProduct()">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ตารางแสดงสินค้า -->
+<h2 class="mt-5">Product List</h2>
+<table class="table table-striped" id="product-list">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Unit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script src="/static/js/products.js"></script>
+{% endblock %}

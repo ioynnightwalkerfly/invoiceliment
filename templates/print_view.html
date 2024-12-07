@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    ใบเสนอราคา
+    <div class="mb-4">
+        <strong>Customer:</strong> <span id="print-customer-name"></span><br>
+        <strong>Date:</strong> <span id="print-date"></span>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ชื่อสินค้า</th>
+                <th>จำนวน</th>
+                <th>ราคาต่อหน่วย</th>
+                <th>ราคารวม</th>
+            </tr>
+        </thead>
+        <tbody id="print-products">
+            <!-- รายการสินค้าจะแสดงที่นี่ -->
+        </tbody>
+    </table>
+    <div class="text-end">
+        <h4>ราคาสุทธิ: <span id="print-total-amount">0.00</span></h4>
+    </div>
+</div>
+<script>
+    // ดึงข้อมูลจาก sessionStorage และแสดงผล
+    const customerName = sessionStorage.getItem('customerName');
+    const date = new Date().toLocaleDateString();
+    const products = JSON.parse(sessionStorage.getItem('selectedProducts') || '[]');
+    const totalAmount = products.reduce((sum, product) => sum + product.total, 0);
+
+    document.getElementById('print-customer-name').textContent = customerName;
+    document.getElementById('print-date').textContent = date;
+
+    const tbody = document.getElementById('print-products');
+    tbody.innerHTML = products.map(product => `
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.quantity}</td>
+            <td>${product.price.toFixed(2)}</td>
+            <td>${product.total.toFixed(2)}</td>
+        </tr>
+    `).join('');
+
+    document.getElementById('print-total-amount').textContent = totalAmount.toFixed(2);
+
+    // พิมพ์หน้า
+    window.onload = () => window.print();
+</script>
+{% endblock %}

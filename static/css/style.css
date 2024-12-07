@@ -1,0 +1,31 @@
+/* โหลดฟอนต์ TH Sarabun PSK จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=TH+Sarabun+PSK:wght@400;700&display=swap');
+
+/* ตั้งค่าฟอนต์เริ่มต้น */
+body {
+    font-family: 'TH Sarabun PSK', sans-serif;
+    background-color: #f8f9fa; /* สีพื้นหลัง (ปรับได้ตามต้องการ) */
+    color: #333; /* สีตัวอักษร */
+    line-height: 1.6;
+    padding-top: 60px;
+}
+
+/* ตั้งค่า Header */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* ตั้งค่าปุ่ม */
+.btn {
+    font-family: 'TH Sarabun PSK', sans-serif;
+}
+
+/* ตั้งค่าตาราง */
+table th, table td {
+    font-family: 'TH Sarabun PSK', sans-serif;
+    font-size: 18px;
+}
+
+

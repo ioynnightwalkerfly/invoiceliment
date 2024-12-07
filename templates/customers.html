@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Customers</h1>
+
+<!-- ฟอร์มเพิ่มลูกค้า -->
+<h2>Add New Customer</h2>
+<form id="customer-form" class="row g-3">
+    <div class="col-md-6">
+        <input type="text" id="name" class="form-control" placeholder="Name" required>
+    </div>
+    <div class="col-md-6">
+        <input type="email" id="email" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="col-md-6">
+        <input type="text" id="phone" class="form-control" placeholder="Phone" required>
+    </div>
+    <div class="col-md-6">
+        <input type="text" id="address" class="form-control" placeholder="Address" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Add Customer</button>
+    </div>
+</form>
+
+<!-- Modal สำหรับแก้ไขลูกค้า -->
+<div class="modal fade" id="editCustomerModal" tabindex="-1" aria-labelledby="editCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCustomerModalLabel">Edit Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-customer-form">
+                    <input type="hidden" id="edit-customer-id">
+                    <div class="mb-3">
+                        <label for="edit-name" class="form-label">Name</label>
+                        <input type="text" id="edit-name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-email" class="form-label">Email</label>
+                        <input type="email" id="edit-email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-phone" class="form-label">Phone</label>
+                        <input type="text" id="edit-phone" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-address" class="form-label">Address</label>
+                        <input type="text" id="edit-address" class="form-control" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="saveEditCustomer()">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ตารางลูกค้า -->
+<h2 class="mt-5">Customer List</h2>
+<table class="table table-striped" id="customer-list">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script src="/static/js/customers.js"></script>
+{% endblock %}
